@@ -35,19 +35,25 @@ submit.onclick = function() {
             result.textContent = `Enter some value!`;
             return;
         }
-
-        if (attempts === 1)
+        else if (userInput.value < minNumber || userInput.value > maxNumber)
         {
-            attempts = 0;
-            attemptsLabel.textContent = `Attempts left: ${attempts}`;
-            result.innerText = `You Lost :( \n Correct Answer ${answer}`;
-            submit.textContent = `Play Again`;
+            window.alert(`Please, enter a valid number BETWEEN ${minNumber} and ${maxNumber}!`)
         }
         else
         {
-            attempts--;
-            attemptsLabel.textContent = `Attempts left: ${attempts}`;
-            result.textContent = `Wrong Answer!`;
+            if (attempts === 1)
+            {
+                attempts = 0;
+                attemptsLabel.textContent = `Attempts left: ${attempts}`;
+                result.innerText = `You Lost :( \n Correct Answer ${answer}`;
+                submit.textContent = `Play Again`;
+            }
+            else
+            {
+                attempts--;
+                attemptsLabel.textContent = `Attempts left: ${attempts}`;
+                result.textContent = `Wrong Answer!`;
+            }
         }
     }
 }
